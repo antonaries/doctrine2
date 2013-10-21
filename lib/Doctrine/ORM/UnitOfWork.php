@@ -90,7 +90,7 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @var array
      */
-    private $entityIdentifiers = array();
+    protected $entityIdentifiers = array();
 
     /**
      * Map of the original entity data of managed entities.
@@ -110,7 +110,7 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @var array
      */
-    private $entityChangeSets = array();
+    protected $entityChangeSets = array();
 
     /**
      * The (cached) states of any known entities.
@@ -135,21 +135,21 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @var array
      */
-    private $entityInsertions = array();
+    protected $entityInsertions = array();
 
     /**
      * A list of all pending entity updates.
      *
      * @var array
      */
-    private $entityUpdates = array();
+    protected $entityUpdates = array();
 
     /**
      * Any pending extra updates that have been scheduled by persisters.
      *
      * @var array
      */
-    private $extraUpdates = array();
+    protected $extraUpdates = array();
 
     /**
      * A list of all pending entity deletions.
@@ -186,7 +186,7 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @var \Doctrine\ORM\EntityManager
      */
-    private $em;
+    protected $em;
 
     /**
      * The calculator used to calculate the order in which changes to
@@ -215,7 +215,7 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @var \Doctrine\Common\EventManager
      */
-    private $evm;
+    protected $evm;
 
     /**
      * Orphaned entities that are scheduled for removal.
@@ -405,7 +405,7 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @return void
      */
-    private function computeSingleEntityChangeSet($entity)
+    protected function computeSingleEntityChangeSet($entity)
     {
         $state = $this->getEntityState($entity);
 
@@ -442,7 +442,7 @@ class UnitOfWork implements PropertyChangedListener
     /**
      * Executes any extra updates that have been scheduled.
      */
-    private function executeExtraUpdates()
+    protected function executeExtraUpdates()
     {
         foreach ($this->extraUpdates as $oid => $update) {
             list ($entity, $changeset) = $update;
@@ -733,7 +733,7 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @return void
      */
-    private function computeAssociationChanges($assoc, $value)
+    protected function computeAssociationChanges($assoc, $value)
     {
         if ($value instanceof Proxy && ! $value->__isInitialized__) {
             return;
@@ -960,7 +960,7 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @param \Doctrine\ORM\Mapping\ClassMetadata $class
      */
-    private function executeUpdates($class)
+    protected function executeUpdates($class)
     {
         $className = $class->name;
         $persister = $this->getEntityPersister($className);

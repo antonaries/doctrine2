@@ -46,14 +46,14 @@ class EntityManager implements ObjectManager
      *
      * @var \Doctrine\ORM\Configuration
      */
-    private $config;
+    protected $config;
 
     /**
      * The database connection used by the EntityManager.
      *
      * @var \Doctrine\DBAL\Connection
      */
-    private $conn;
+    protected $conn;
 
     /**
      * The metadata factory, used to retrieve the ORM metadata of entity classes.
@@ -74,7 +74,7 @@ class EntityManager implements ObjectManager
      *
      * @var \Doctrine\ORM\UnitOfWork
      */
-    private $unitOfWork;
+    protected $unitOfWork;
 
     /**
      * The event manager that is the central point of the event system.
