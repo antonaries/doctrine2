@@ -903,7 +903,7 @@ class UnitOfWork implements PropertyChangedListener
      *
      * @param \Doctrine\ORM\Mapping\ClassMetadata $class
      */
-    private function executeInserts($class)
+    protected function executeInserts($class)
     {
         $className = $class->name;
         $persister = $this->getEntityPersister($className);
